@@ -1,10 +1,4 @@
-import java.io.IOException;
-import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class App {    
@@ -14,10 +8,13 @@ public class App {
         // then print the extracted data
         // also will generate WhatsApp stickers from the movies posters links
 
-        var json = returnMoviesListJson();
+        //https://api.mocki.io/v2/549a5d8b top 10 popular movies
+        //https://api.mocki.io/v2/549a5d8b/NASA-APOD-JamesWebbSpaceTelescope JamesWebb images
+
         var mapper = new ObjectMapper();
-        var items = mapper.readValue(json, Items.class);    
-        var movies = items.getItems();
+        var moviesJson = ApiRequester.getApiJsonReturn("https://api.mocki.io/v2/549a5d8b");        
+        var content = mapper.readValue(moviesJson, Items.class);            
+        var movies = content.getItems();        
         var stickerGenerator = new StickerGenerator();
             
         for (MoviesDTO movie : movies) {
@@ -29,15 +26,6 @@ public class App {
 
             var fileURL = new URL(movie.getPosterURL()).openStream();
             stickerGenerator.create(fileURL, movie.getTitle() + ".png");
-        }
-    }
-
-    private static String returnMoviesListJson() throws IOException, InterruptedException {
-        var url = "https://api.mocki.io/v2/549a5d8b";
-        URI address = URI.create(url);
-        var client = HttpClient.newHttpClient();        
-        var request = HttpRequest.newBuilder(address).GET().build();
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-        return response.body();
-    }
+        }        
+    }     
 }
