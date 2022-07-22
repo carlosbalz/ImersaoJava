@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Items {
     @JsonProperty("items")
-    private List<MoviesDTO> items = new ArrayList<MoviesDTO>();
+    private List<Movie> items = new ArrayList<Movie>();
 
-    public List<MoviesDTO> getItems() {
+    public List<Movie> getItems() {
         return items;
     }
-    public void setItems(List<MoviesDTO> items) {
+    public void setItems(List<Movie> items) {
         this.items = items;
     }
 
