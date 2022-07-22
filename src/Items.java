@@ -1,16 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Items {
     @JsonProperty("items")
-    private List<Movie> items = new ArrayList<Movie>();
+    private Movie[] items;
 
-    public List<Movie> getItems() {
+    public Movie[] getItems() {
         return items;
     }
-    public void setItems(List<Movie> items) {
+    public void setItems(Movie[] items) {
         this.items = items;
     }
 
