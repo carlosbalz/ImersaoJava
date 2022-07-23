@@ -2,15 +2,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Items {
     @JsonProperty("items")
-    private Movie[] items;
+    private Movie[] items;    
+
+    @JsonProperty("errorMessage")
+    private String errorMessage;
 
     public Movie[] getItems() {
         return items;
     }
-    public void setItems(Movie[] items) {
-        this.items = items;
-    }
-
-    @JsonProperty("errorMessage")
-    private String errorMessage;
 }

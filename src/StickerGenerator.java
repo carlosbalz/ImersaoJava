@@ -20,6 +20,6 @@ public class StickerGenerator {
         graphics.setFont(font);
         graphics.drawString("by StickerGenerator", Math.round(width/20), Math.round((height-(height/20))));
 
-        ImageIO.write(newImage, "png", new File("output/".concat(fileName)));
+        ImageIO.write(newImage, "png", new File("stickers/".concat(fileName)));
     }
 }
