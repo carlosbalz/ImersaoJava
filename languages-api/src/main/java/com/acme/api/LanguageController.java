@@ -10,12 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LanguageController {
-    
-    // private List<Language> favoriteLanguages = List.of(
-    //     new Language("Java", "https://raw.githubusercontent.com/abrahamcalf/programming-languages-logos/master/src/java/java_256x256.png", 1),
-    //     new Language("C#", "https://raw.githubusercontent.com/abrahamcalf/programming-languages-logos/master/src/csharp/csharp_256x256.png", 2),
-    //     new Language("Javascript", "https://github.com/abrahamcalf/programming-languages-logos/blob/master/src/javascript/javascript_256x256.png?raw=true", 3)
-    // );
+            
     @Autowired
     private LanguageRepository repository;
 
